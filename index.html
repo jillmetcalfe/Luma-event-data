@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Registrations</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 1em;
+    }
+    #count {
+      font-size: 2em;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div>Registrations so far:</div>
+  <div id="count">Loading...</div>
+
+  <script>
+    fetch('https://jillmetcalfe.github.io/Luma-event-data/registrations.json')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('count').textContent = data.count;
+      })
+      .catch(err => {
+        document.getElementById('count').textContent = 'Error loading count';
+        console.error(err);
+      });
+  </script>
+</body>
+</html>
